@@ -78,8 +78,8 @@ Note: It's not a perfect mapping to what you're going to build, below highlights
 
 ## Showing the Correct Component
 
-- [ ] place `FunctionalDogs` inside of the `.content-container` div of the `FunctionalSection` component **using React Children**
-- [ ] place `FunctionalCreateDogForm` inside of the `.content-container` div of the `FunctionalSection` component **using React Children**
+- [x] place `FunctionalDogs` inside of the `.content-container` div of the `FunctionalSection` component **using React Children**
+- [x] place `FunctionalCreateDogForm` inside of the `.content-container` div of the `FunctionalSection` component **using React Children**
 - [ ] place `ClassDogs` inside of the `.content-container` div of the `ClassSection` component **using React Children**
 - [ ] place `ClassCreateDogForm` inside of the `.content-container` div of the `ClassSection` component **using React Children**
 
@@ -163,3 +163,5 @@ If the data is still loading then...
 - [ ] If you navigate to the `unfavorited` tab, you should see the new dog in the list of dogs
 - [ ] After the submission the form should be cleared, and the select should return to the default
 - [ ] After submitting a toast notification from `react-hot-toast` should appear saying "Dog Created"
+#   p u p E P i c k e r T S  
+ 
