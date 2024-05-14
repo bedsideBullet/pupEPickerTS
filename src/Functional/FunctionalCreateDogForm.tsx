@@ -1,15 +1,21 @@
 import { dogPictures } from "../dog-pictures";
+import { Dog } from "../types";
 
 // use this as your default selected image
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
-export const FunctionalCreateDogForm = () => {
+export const FunctionalCreateDogForm = ({}: // createDog,
+{
+  // createDog: (dog: Omit<Dog, "id">) => void;
+}) => {
   return (
     <form
+      className=""
       action=""
       id="create-dog-form"
       onSubmit={(e) => {
         e.preventDefault();
+        // createDog();
       }}
     >
       <h4>Create a New Dog</h4>

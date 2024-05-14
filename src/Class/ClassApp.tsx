@@ -11,7 +11,6 @@ export class ClassApp extends Component {
           <h1>pup-e-picker (Class Version)</h1>
         </header>
         <ClassSection />
-
         {/* should be inside of the ClassSection component using react children */}
         <ClassDogs />
         <ClassCreateDogForm />

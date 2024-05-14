@@ -5,14 +5,20 @@ import { FunctionalDogs } from "./FunctionalDogs";
 import { FunctionalSection } from "./FunctionalSection";
 import { Requests } from "../api";
 import { Dog } from "../types";
-import { boolean } from "zod";
 
 export function FunctionalApp() {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
+  const [isFavoritem, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
     Requests.getAllDogs().then(setAllDogs);
   }, []);
+
+  // const createDog = (dog: Omit<Dog, "id">) => {
+  //   Requests.postDog(dog).then(() => {
+  //     Requests.getAllDogs().then(setAllDogs);
+  //   });
+  // };
 
   return (
     <div className="App" style={{ backgroundColor: "skyblue" }}>
@@ -21,7 +27,7 @@ export function FunctionalApp() {
       </header>
       <FunctionalSection>
         <FunctionalDogs allDogs={allDogs} />
-        <FunctionalCreateDogForm />
+        <FunctionalCreateDogForm /*createDog={createDog} */ />
       </FunctionalSection>
     </div>
   );

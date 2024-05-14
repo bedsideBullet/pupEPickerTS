@@ -12,7 +12,7 @@ export const FunctionalSection = ({ children }: { children: ReactNode }) => {
         </Link>
         <div className="selectors">
           {/* This should display the favorited count */}
-          <div className={`selector active`} onClick={() => {}}>
+          <div className={`selector`} onClick={() => {}}>
             favorited ( 12 )
           </div>
 
