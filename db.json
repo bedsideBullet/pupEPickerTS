@@ -1,1 +1,123 @@
-{"dogs":[{"name":"Nannie","image":"/assets/corgi.png","description":"inquisitively oof calm acupuncture whereas equatorial gosh effectuate","isFavorite":true,"id":0},{"name":"Brycen","image":"/assets/chihuahua.avif","description":"bottleful after baste obliterate putrid","isFavorite":false,"id":1},{"name":"Thurman","image":"/assets/boxer.png","description":"subtle though jade indeed before island aha","isFavorite":true,"id":2},{"name":"Orrin","image":"/assets/chihuahua.avif","description":"provided after despite till watcher","isFavorite":true,"id":3},{"name":"Lucie","image":"/assets/dalmation.png","description":"psst justly browsing all solid","isFavorite":false,"id":4},{"name":"Luella","image":"/assets/blue-heeler.png","description":"smoothly idolized naturally yum that till phew","isFavorite":false,"id":5},{"name":"Shannon","image":"/assets/cowardly.png","description":"invite insistent brr truthfully athwart bah straddle assassination","isFavorite":true,"id":6},{"name":"Imani","image":"/assets/dalmation.png","description":"rattle excluding skean on recovery","isFavorite":true,"id":7},{"name":"Danyka","image":"/assets/chihuahua.avif","description":"chillax daily sally however lest","isFavorite":true,"id":8},{"name":"Toby","image":"/assets/blue-heeler.png","description":"wildly forenenst rightfully till how","isFavorite":false,"id":9},{"name":"Tyson","image":"/assets/blue-heeler.png","description":"inequality maroon however nimble segregate","isFavorite":false,"id":10},{"name":"Eulalia","image":"/assets/boxer.png","description":"foolish rarely despite fooey frantically definitive jubilant dislike","isFavorite":true,"id":11},{"name":"Lawson","image":"/assets/cowardly.png","description":"uniform but wet cruelly knowledgeable","isFavorite":true,"id":12},{"name":"Cooper","image":"/assets/dalmation.png","description":"furthermore when righteously when handlebar breathe considering so","isFavorite":false,"id":13},{"name":"Melody","image":"/assets/chihuahua.avif","description":"demotivate above hmph exploit hatbox quaver these","isFavorite":false,"id":14},{"name":"Linda","image":"/assets/blue-heeler.png","description":"instead angelic kissingly easily apropos tempting crease","isFavorite":true,"id":15},{"name":"Dakota","image":"/assets/chihuahua.avif","description":"salad hopelessly loyally gah whoever","isFavorite":true,"id":16},{"name":"Stewart","image":"/assets/blue-heeler.png","description":"bad whoever obedient modulo investigation daily yum","isFavorite":true,"id":17},{"name":"Melyssa","image":"/assets/cowardly.png","description":"drat considering youthfully unfortunately whereas aside underline jealously","isFavorite":false,"id":18},{"name":"Korey","image":"/assets/chihuahua.avif","description":"loosely at bossy surprisingly friendly for well-lit seldom","isFavorite":false,"id":19}]}
+{
+  "dogs": [
+    {
+      "name": "Cielo",
+      "image": "/assets/cowardly.png",
+      "description": "pfft save lest pfft testament",
+      "isFavorite": true,
+      "id": 3
+    },
+    {
+      "name": "Kraig",
+      "image": "/assets/dalmation.png",
+      "description": "nocturnal rebuild amid likewise after",
+      "isFavorite": false,
+      "id": 4
+    },
+    {
+      "name": "Olen",
+      "image": "/assets/corgi.png",
+      "description": "gosh pita appall modulo now boo whereas overflow",
+      "isFavorite": true,
+      "id": 5
+    },
+    {
+      "name": "Lucie",
+      "image": "/assets/blue-heeler.png",
+      "description": "stables sorrowful very sheepishly repatriate reorganise phooey mediate",
+      "isFavorite": true,
+      "id": 6
+    },
+    {
+      "name": "Laurence",
+      "image": "/assets/corgi.png",
+      "description": "loss pfft trait walnut miserably before out",
+      "isFavorite": true,
+      "id": 7
+    },
+    {
+      "name": "Tamara",
+      "image": "/assets/dalmation.png",
+      "description": "stump fondly mull until wobbly",
+      "isFavorite": true,
+      "id": 8
+    },
+    {
+      "name": "Kristin",
+      "image": "/assets/blue-heeler.png",
+      "description": "ouch whenever instead phew atop wholly reluctantly",
+      "isFavorite": false,
+      "id": 9
+    },
+    {
+      "name": "Michele",
+      "image": "/assets/corgi.png",
+      "description": "adventurously huzzah yuck versus incidentally utilized finally past",
+      "isFavorite": true,
+      "id": 10
+    },
+    {
+      "name": "Demario",
+      "image": "/assets/dalmation.png",
+      "description": "monotheism expectorate consume likewise by demotivate strictly revivify",
+      "isFavorite": false,
+      "id": 11
+    },
+    {
+      "name": "Erin",
+      "image": "/assets/blue-heeler.png",
+      "description": "so cautiously gracefully nearly on separately as",
+      "isFavorite": true,
+      "id": 12
+    },
+    {
+      "name": "Jalon",
+      "image": "/assets/blue-heeler.png",
+      "description": "near siding regale embarrassed how disdain broadly researcher",
+      "isFavorite": true,
+      "id": 13
+    },
+    {
+      "name": "Kirstin",
+      "image": "/assets/dalmation.png",
+      "description": "oof towards fear hmph bleakly equally atomise",
+      "isFavorite": true,
+      "id": 14
+    },
+    {
+      "name": "Shania",
+      "image": "/assets/cowardly.png",
+      "description": "er cultured meh steepen hm ick parallel oddly",
+      "isFavorite": true,
+      "id": 15
+    },
+    {
+      "name": "Bernita",
+      "image": "/assets/dalmation.png",
+      "description": "gadzooks spill slow chronicle twang",
+      "isFavorite": false,
+      "id": 16
+    },
+    {
+      "name": "Lelia",
+      "image": "/assets/chihuahua.avif",
+      "description": "apud listen consequently pocket defiantly graceful hamburger apud",
+      "isFavorite": false,
+      "id": 17
+    },
+    {
+      "name": "Alberto",
+      "image": "/assets/chihuahua.avif",
+      "description": "restfully rope volumise homogenate proper yowza pro given",
+      "isFavorite": true,
+      "id": 18
+    },
+    {
+      "name": "Alysha",
+      "image": "/assets/dalmation.png",
+      "description": "but desert partial humour localise disseminate barrel",
+      "isFavorite": false,
+      "id": 19
+    }
+  ]
+}

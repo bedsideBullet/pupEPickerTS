@@ -2,7 +2,15 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-export const FunctionalSection = ({ children }: { children: ReactNode }) => {
+export const FunctionalSection = ({
+  children,
+  createIsActive,
+  setActive,
+}: {
+  children: ReactNode;
+  createIsActive: boolean;
+  setActive: () => void;
+}) => {
   return (
     <section id="main-section">
       <div className="container-header">
@@ -20,7 +28,11 @@ export const FunctionalSection = ({ children }: { children: ReactNode }) => {
           <div className={`selector`} onClick={() => {}}>
             unfavorited ( 25 )
           </div>
-          <div className={`selector`} onClick={() => {}}>
+          <div
+            className={`selector ${createIsActive ? "active" : ""}`}
+            id={"create-btn"}
+            onClick={setActive}
+          >
             create dog
           </div>
         </div>
