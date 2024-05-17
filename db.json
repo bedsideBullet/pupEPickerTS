@@ -1,121 +1,142 @@
 {
   "dogs": [
     {
-      "name": "Cielo",
+      "name": "Otto",
       "image": "/assets/cowardly.png",
-      "description": "pfft save lest pfft testament",
+      "description": "ouch similarity zesty vastly shallows superiority carefree",
+      "isFavorite": false,
+      "id": 0
+    },
+    {
+      "name": "Imelda",
+      "image": "/assets/boxer.png",
+      "description": "apropos greatly brr voluntarily majestically",
       "isFavorite": true,
+      "id": 1
+    },
+    {
+      "name": "Luigi",
+      "image": "/assets/chihuahua.avif",
+      "description": "lazy focused blissfully save gosh popcorn planet",
+      "isFavorite": false,
+      "id": 2
+    },
+    {
+      "name": "Dayna",
+      "image": "/assets/chihuahua.avif",
+      "description": "instead slowly brave till unpack agonizing boo psst",
+      "isFavorite": false,
       "id": 3
     },
     {
-      "name": "Kraig",
-      "image": "/assets/dalmation.png",
-      "description": "nocturnal rebuild amid likewise after",
+      "name": "Kelvin",
+      "image": "/assets/chihuahua.avif",
+      "description": "grouchy concerned drainage lest bode until gadzooks vainly",
       "isFavorite": false,
       "id": 4
     },
     {
-      "name": "Olen",
-      "image": "/assets/corgi.png",
-      "description": "gosh pita appall modulo now boo whereas overflow",
+      "name": "Sabrina",
+      "image": "/assets/boxer.png",
+      "description": "raw unless now modulo ignorant",
       "isFavorite": true,
       "id": 5
     },
     {
-      "name": "Lucie",
-      "image": "/assets/blue-heeler.png",
-      "description": "stables sorrowful very sheepishly repatriate reorganise phooey mediate",
-      "isFavorite": true,
+      "name": "Clifford",
+      "image": "/assets/boxer.png",
+      "description": "grubby complication ouch past discrete contrive supposing",
+      "isFavorite": false,
       "id": 6
     },
     {
-      "name": "Laurence",
-      "image": "/assets/corgi.png",
-      "description": "loss pfft trait walnut miserably before out",
-      "isFavorite": true,
+      "name": "Camryn",
+      "image": "/assets/boxer.png",
+      "description": "recession midnight unto whoa calmly happiness tangible",
+      "isFavorite": false,
       "id": 7
     },
     {
-      "name": "Tamara",
-      "image": "/assets/dalmation.png",
-      "description": "stump fondly mull until wobbly",
+      "name": "Mack",
+      "image": "/assets/chihuahua.avif",
+      "description": "helplessly remainder tarry pullulate legal towards round pomelo",
       "isFavorite": true,
       "id": 8
     },
     {
-      "name": "Kristin",
+      "name": "Marlen",
       "image": "/assets/blue-heeler.png",
-      "description": "ouch whenever instead phew atop wholly reluctantly",
-      "isFavorite": false,
+      "description": "bulky toward wilted bully repulsive illiterate upright illiterate",
+      "isFavorite": true,
       "id": 9
     },
     {
-      "name": "Michele",
-      "image": "/assets/corgi.png",
-      "description": "adventurously huzzah yuck versus incidentally utilized finally past",
+      "name": "Ethyl",
+      "image": "/assets/chihuahua.avif",
+      "description": "pour briefly derive er bleakly",
       "isFavorite": true,
       "id": 10
     },
     {
-      "name": "Demario",
-      "image": "/assets/dalmation.png",
-      "description": "monotheism expectorate consume likewise by demotivate strictly revivify",
-      "isFavorite": false,
+      "name": "Sammie",
+      "image": "/assets/corgi.png",
+      "description": "ulcerate harm finally embitter as duh until",
+      "isFavorite": true,
       "id": 11
     },
     {
-      "name": "Erin",
+      "name": "Brant",
       "image": "/assets/blue-heeler.png",
-      "description": "so cautiously gracefully nearly on separately as",
+      "description": "apropos lasso woefully supposing compartmentalize ultimate in dulcimer",
       "isFavorite": true,
       "id": 12
     },
     {
-      "name": "Jalon",
+      "name": "Vincenzo",
       "image": "/assets/blue-heeler.png",
-      "description": "near siding regale embarrassed how disdain broadly researcher",
+      "description": "readily medium frankly roughly after fossilise while",
       "isFavorite": true,
       "id": 13
     },
     {
-      "name": "Kirstin",
-      "image": "/assets/dalmation.png",
-      "description": "oof towards fear hmph bleakly equally atomise",
+      "name": "Thurman",
+      "image": "/assets/chihuahua.avif",
+      "description": "overjoyed chief sap worthwhile as restaurant jiggle astride",
       "isFavorite": true,
       "id": 14
     },
     {
-      "name": "Shania",
-      "image": "/assets/cowardly.png",
-      "description": "er cultured meh steepen hm ick parallel oddly",
-      "isFavorite": true,
+      "name": "Jeanne",
+      "image": "/assets/chihuahua.avif",
+      "description": "disposition truss panhandle coffee positively since after what",
+      "isFavorite": false,
       "id": 15
     },
     {
-      "name": "Bernita",
-      "image": "/assets/dalmation.png",
-      "description": "gadzooks spill slow chronicle twang",
-      "isFavorite": false,
+      "name": "Lorenzo",
+      "image": "/assets/cowardly.png",
+      "description": "than that following blushing metro",
+      "isFavorite": true,
       "id": 16
     },
     {
-      "name": "Lelia",
-      "image": "/assets/chihuahua.avif",
-      "description": "apud listen consequently pocket defiantly graceful hamburger apud",
-      "isFavorite": false,
+      "name": "Esta",
+      "image": "/assets/boxer.png",
+      "description": "meanwhile garlic at formalize ugh start though",
+      "isFavorite": true,
       "id": 17
     },
     {
-      "name": "Alberto",
+      "name": "Shanie",
       "image": "/assets/chihuahua.avif",
-      "description": "restfully rope volumise homogenate proper yowza pro given",
-      "isFavorite": true,
+      "description": "psst bleak uh-huh pfft yurt",
+      "isFavorite": false,
       "id": 18
     },
     {
-      "name": "Alysha",
-      "image": "/assets/dalmation.png",
-      "description": "but desert partial humour localise disseminate barrel",
+      "name": "Jeramy",
+      "image": "/assets/blue-heeler.png",
+      "description": "though accidentally drat mountainous unwilling knowingly as overhead",
       "isFavorite": false,
       "id": 19
     }

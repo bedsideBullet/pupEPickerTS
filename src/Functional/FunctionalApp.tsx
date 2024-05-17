@@ -8,9 +8,37 @@ import { Dog } from "../types";
 export function FunctionalApp() {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
   const [createIsActive, setCreateIsActive] = useState<boolean>(false);
+  const [favotiteIsActive, setFavoriteIsActive] = useState<boolean>(false);
+  const [unfavotiteIsActive, setUnfavoriteActive] = useState<boolean>(false);
 
-  const setActive = () => {
-    setCreateIsActive((prev) => !prev);
+  const setCreateActive = () => {
+    if (!createIsActive) {
+      setCreateIsActive(true),
+        setFavoriteIsActive(false),
+        setUnfavoriteActive(false);
+    } else {
+      setCreateIsActive(false);
+    }
+  };
+
+  const setFavoriteActive = () => {
+    if (!favotiteIsActive) {
+      setFavoriteIsActive(true),
+        setCreateIsActive(false),
+        setUnfavoriteActive(false);
+    } else {
+      setFavoriteIsActive(false);
+    }
+  };
+
+  const setUnfavotiteActive = () => {
+    if (!unfavotiteIsActive) {
+      setUnfavoriteActive(true),
+        setCreateIsActive(false),
+        setFavoriteIsActive(false);
+    } else {
+      setUnfavoriteActive(false);
+    }
   };
 
   useEffect(() => {
@@ -22,9 +50,23 @@ export function FunctionalApp() {
       <header>
         <h1>pup-e-picker (Functional)</h1>
       </header>
-      <FunctionalSection setActive={setActive} createIsActive={createIsActive}>
+      <FunctionalSection
+        allDogs={allDogs}
+        createIsActive={createIsActive}
+        favotiteIsActive={favotiteIsActive}
+        unfavotiteIsActive={unfavotiteIsActive}
+        setCreateActive={setCreateActive}
+        setFavoriteActive={setFavoriteActive}
+        setUnfavotiteActive={setUnfavotiteActive}
+      >
         {!createIsActive ? (
-          <FunctionalDogs allDogs={allDogs} setAllDogs={setAllDogs} />
+          <FunctionalDogs
+            allDogs={allDogs}
+            setAllDogs={setAllDogs}
+            favotiteIsActive={favotiteIsActive}
+            unfavotiteIsActive={unfavotiteIsActive}
+            createIsActive={createIsActive}
+          />
         ) : (
           <FunctionalCreateDogForm />
         )}

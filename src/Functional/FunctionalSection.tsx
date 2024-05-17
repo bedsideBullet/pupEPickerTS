@@ -1,16 +1,39 @@
 // you can use this type for react children if you so choose
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Dog } from "../types";
 
 export const FunctionalSection = ({
+  allDogs,
   children,
   createIsActive,
-  setActive,
+  favotiteIsActive,
+  unfavotiteIsActive,
+  setCreateActive,
+  setFavoriteActive,
+  setUnfavotiteActive,
 }: {
+  allDogs: Dog[];
   children: ReactNode;
   createIsActive: boolean;
-  setActive: () => void;
+  favotiteIsActive: boolean;
+  unfavotiteIsActive: boolean;
+  setCreateActive: () => void;
+  setFavoriteActive: () => void;
+  setUnfavotiteActive: () => void;
 }) => {
+  const favoriteList = allDogs
+    .filter((dog) => dog.isFavorite)
+    .map((dog) => {
+      return dog;
+    });
+
+  const unfavoriteList = allDogs
+    .filter((dog) => dog.isFavorite)
+    .map((dog) => {
+      return dog;
+    });
+
   return (
     <section id="main-section">
       <div className="container-header">
@@ -20,18 +43,24 @@ export const FunctionalSection = ({
         </Link>
         <div className="selectors">
           {/* This should display the favorited count */}
-          <div className={`selector`} onClick={() => {}}>
-            favorited ( 12 )
+          <div
+            className={`selector ${favotiteIsActive ? "active" : ""}`}
+            onClick={setFavoriteActive}
+          >
+            favorited ({favoriteList.length})
           </div>
 
           {/* This should display the unfavorited count */}
-          <div className={`selector`} onClick={() => {}}>
-            unfavorited ( 25 )
+          <div
+            className={`selector ${unfavotiteIsActive ? "active" : ""}`}
+            onClick={setUnfavotiteActive}
+          >
+            unfavorited ({unfavoriteList.length})
           </div>
           <div
             className={`selector ${createIsActive ? "active" : ""}`}
             id={"create-btn"}
-            onClick={setActive}
+            onClick={setCreateActive}
           >
             create dog
           </div>

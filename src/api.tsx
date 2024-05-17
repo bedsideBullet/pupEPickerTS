@@ -20,7 +20,7 @@ export const Requests = {
   },
 
   // should delete a dog from the database
-  deleteDog: (dogId: number) => {
+  deleteDog: (dogId: number): Promise<void> => {
     return fetch(`${baseUrl}/dogs/${dogId}`, {
       method: "DELETE",
       headers: {
@@ -31,7 +31,17 @@ export const Requests = {
     });
   },
 
-  updateDog: () => {},
+  updateDog: (dog: Dog) => {
+    return fetch(`${baseUrl}/dogs/${dog.id}`, {
+      body: JSON.stringify(dog),
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then((response) => {
+      response.json;
+    });
+  },
 
   // Just a dummy function for use in the playground
   dummyFunction: () => {
