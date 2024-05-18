@@ -4,18 +4,20 @@ import { FunctionalDogs } from "./FunctionalDogs";
 import { FunctionalSection } from "./FunctionalSection";
 import { Requests } from "../api";
 import { Dog } from "../types";
+import { Toaster } from "react-hot-toast";
 
 export function FunctionalApp() {
   const [allDogs, setAllDogs] = useState<Dog[]>([]);
   const [createIsActive, setCreateIsActive] = useState<boolean>(false);
   const [favotiteIsActive, setFavoriteIsActive] = useState<boolean>(false);
-  const [unfavotiteIsActive, setUnfavoriteActive] = useState<boolean>(false);
+  const [unfavoriteIsActive, setUnfavoriteIsActive] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const setCreateActive = () => {
     if (!createIsActive) {
       setCreateIsActive(true),
         setFavoriteIsActive(false),
-        setUnfavoriteActive(false);
+        setUnfavoriteIsActive(false);
     } else {
       setCreateIsActive(false);
     }
@@ -25,19 +27,19 @@ export function FunctionalApp() {
     if (!favotiteIsActive) {
       setFavoriteIsActive(true),
         setCreateIsActive(false),
-        setUnfavoriteActive(false);
+        setUnfavoriteIsActive(false);
     } else {
       setFavoriteIsActive(false);
     }
   };
 
-  const setUnfavotiteActive = () => {
-    if (!unfavotiteIsActive) {
-      setUnfavoriteActive(true),
+  const setUnfavoriteActive = () => {
+    if (!unfavoriteIsActive) {
+      setUnfavoriteIsActive(true),
         setCreateIsActive(false),
         setFavoriteIsActive(false);
     } else {
-      setUnfavoriteActive(false);
+      setUnfavoriteIsActive(false);
     }
   };
 
@@ -46,29 +48,35 @@ export function FunctionalApp() {
   }, []);
 
   return (
-    <div className="App" style={{ backgroundColor: "skyblue" }}>
+    <div className="App" style={{ backgroundColor: "skyblue" }}> 
       <header>
         <h1>pup-e-picker (Functional)</h1>
       </header>
+      <Toaster />
       <FunctionalSection
         allDogs={allDogs}
         createIsActive={createIsActive}
         favotiteIsActive={favotiteIsActive}
-        unfavotiteIsActive={unfavotiteIsActive}
+        unfavotiteIsActive={unfavoriteIsActive}
         setCreateActive={setCreateActive}
         setFavoriteActive={setFavoriteActive}
-        setUnfavotiteActive={setUnfavotiteActive}
+        setUnfavoriteActive={setUnfavoriteActive}
       >
         {!createIsActive ? (
           <FunctionalDogs
             allDogs={allDogs}
             setAllDogs={setAllDogs}
             favotiteIsActive={favotiteIsActive}
-            unfavotiteIsActive={unfavotiteIsActive}
             createIsActive={createIsActive}
+            unfavoriteIsActive={unfavoriteIsActive}
+            isLoading={isLoading}
+            setIsLoading={setIsLoading}
           />
         ) : (
-          <FunctionalCreateDogForm />
+          <FunctionalCreateDogForm 
+          setAllDogs={setAllDogs} 
+          isLoading={isLoading}
+          setIsLoading={setIsLoading} />
         )}
       </FunctionalSection>
     </div>

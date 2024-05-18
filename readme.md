@@ -121,7 +121,7 @@ You should use conditional rendering to show different components inside of the 
 - [x] When you click on a gray heart, it should turn red and the dog's `isFavorite` property should be set to `true` in the database
 - [x] When you click on a red heart, it should turn gray and the dog's `isFavorite` property should be set to `false` in the database
 - [x] When you click on the trash icon, it should delete the dog from the database and show the updated list of dogs
-- [ ] When you create a dog, it should be added to the database
+- [x] When you create a dog, it should be added to the database
 
 ## Organizing your fetch calls
 
@@ -146,22 +146,22 @@ You should use conditional rendering to show different components inside of the 
 - [x] Clicking a gray heart on a dog should turn it red and update the database to set `isFavorite` to `true`
 - [x] Clicking a red heart on a dog should turn it gray and update the database to set `isFavorite` to `false`
 - [x] Clicking the trash icon on a dog should delete it from the database and update the list of dogs on the page
-- [ ] Creating a dog should add it to the database and update the list of dogs on the page
+- [x] Creating a dog should add it to the database and update the list of dogs on the page
 
 ## Loading States
 
 If the data is still loading then...
 
-- [ ] All inputs should be disabled
-- [ ] Buttons should be disabled
+- [x] All inputs should be disabled
+- [x] Buttons should be disabled
 
 ## What happens when you submit the form
 
-- [ ] When you submit the form, it should create a new dog in the database
-- [ ] If you navigate to the `all` tab, you should see the new dog in the list of dogs
-- [ ] If you navigate to the `favorited` tab, you should NOT see the new dog in the list of dogs
-- [ ] If you navigate to the `unfavorited` tab, you should see the new dog in the list of dogs
-- [ ] After the submission the form should be cleared, and the select should return to the default
+- [x] When you submit the form, it should create a new dog in the database
+- [x] If you navigate to the `all` tab, you should see the new dog in the list of dogs
+- [x] If you navigate to the `favorited` tab, you should NOT see the new dog in the list of dogs
+- [x] If you navigate to the `unfavorited` tab, you should see the new dog in the list of dogs
+- [x] After the submission the form should be cleared, and the select should return to the default
 - [ ] After submitting a toast notification from `react-hot-toast` should appear saying "Dog Created"
       #   p u p E P i c k e r T S 
        

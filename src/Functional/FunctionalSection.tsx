@@ -11,7 +11,7 @@ export const FunctionalSection = ({
   unfavotiteIsActive,
   setCreateActive,
   setFavoriteActive,
-  setUnfavortiteActive,
+  setUnfavoriteActive,
 }: {
   allDogs: Dog[];
   children: ReactNode;
@@ -20,7 +20,7 @@ export const FunctionalSection = ({
   unfavotiteIsActive: boolean;
   setCreateActive: () => void;
   setFavoriteActive: () => void;
-  setUnfavortiteActive: () => void;
+  setUnfavoriteActive: () => void;
 }) => {
   const favoriteList = allDogs
     .filter((dog) => dog.isFavorite)
@@ -29,10 +29,10 @@ export const FunctionalSection = ({
     });
 
   const unfavoriteList = allDogs
-    .filter((dog) => !dog.isFavorite)
-    .map((dog) => {
-      return dog;
-    });
+  .filter((dog) => !dog.isFavorite)
+  .map((dog) => {
+    return dog;
+  });
 
   return (
     <section id="main-section">
@@ -53,7 +53,7 @@ export const FunctionalSection = ({
           {/* This should display the unfavorited count */}
           <div
             className={`selector ${unfavotiteIsActive ? "active" : ""}`}
-            onClick={setUnfavortiteActive}
+            onClick={setUnfavoriteActive}
           >
             unfavorited ({unfavoriteList.length})
           </div>

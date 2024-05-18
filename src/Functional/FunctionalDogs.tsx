@@ -8,7 +8,9 @@ type FunctionalDogProps = {
   setAllDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
   favotiteIsActive: boolean;
   createIsActive: boolean;
-  unfavotiteIsActive: boolean;
+  unfavoriteIsActive: boolean;
+  isLoading: boolean
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
@@ -17,9 +19,14 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
   setAllDogs,
   favotiteIsActive,
   createIsActive,
-  unfavotiteIsActive,
+  unfavoriteIsActive,
+  isLoading,
+  setIsLoading
 }) => {
+
+
   const favoriteClick = (dog: Dog) => {
+    setIsLoading(true)
     const updatedDog = { ...dog, isFavorite: !dog.isFavorite };
 
     Requests.updateDog(updatedDog).then(() => {
@@ -30,14 +37,15 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
         return d;
       });
       setAllDogs(updatedDogs);
-    });
+    }).finally(() => setIsLoading(false));
   };
 
   const deleteDog = (dogId: number) => {
+    setIsLoading(true)
     Requests.deleteDog(dogId).then(() => {
       const updatedDogs = allDogs.filter((dog) => dog.id !== dogId);
       setAllDogs(updatedDogs);
-    });
+    }).finally(() => setIsLoading(false));
   };
 
   const dogList = (dogs: Dog[]) => {
@@ -54,13 +62,13 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
         onHeartClick={() => {
           favoriteClick(dog);
         }}
-        isLoading={false}
+        isLoading={isLoading}
       />
     ));
   };
 
   const showAllDogs =
-    !favotiteIsActive && !createIsActive && !unfavotiteIsActive;
+    !favotiteIsActive && !createIsActive && !unfavoriteIsActive;
   const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
   const unfavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
 
