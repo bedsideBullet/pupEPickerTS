@@ -1,26 +1,22 @@
 // you can use this type for react children if you so choose
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Dog } from "../types";
+import { ActiveTab, Dog } from "../types";
 
 export const FunctionalSection = ({
   allDogs,
   children,
-  createIsActive,
-  favotiteIsActive,
-  unfavotiteIsActive,
+  activeTab,
   setCreateActive,
   setFavoriteActive,
   setUnfavoriteActive,
 }: {
   allDogs: Dog[];
   children: ReactNode;
-  createIsActive: boolean;
-  favotiteIsActive: boolean;
-  unfavotiteIsActive: boolean;
-  setCreateActive: () => void;
-  setFavoriteActive: () => void;
-  setUnfavoriteActive: () => void;
+  activeTab: ActiveTab;
+  setCreateActive: MouseEventHandler<HTMLDivElement>;
+  setFavoriteActive: MouseEventHandler<HTMLDivElement>;
+  setUnfavoriteActive: MouseEventHandler<HTMLDivElement>;
 }) => {
   const favoriteList = allDogs
     .filter((dog) => dog.isFavorite)
@@ -29,10 +25,10 @@ export const FunctionalSection = ({
     });
 
   const unfavoriteList = allDogs
-  .filter((dog) => !dog.isFavorite)
-  .map((dog) => {
-    return dog;
-  });
+    .filter((dog) => !dog.isFavorite)
+    .map((dog) => {
+      return dog;
+    });
 
   return (
     <section id="main-section">
@@ -44,7 +40,7 @@ export const FunctionalSection = ({
         <div className="selectors">
           {/* This should display the favorited count */}
           <div
-            className={`selector ${favotiteIsActive ? "active" : ""}`}
+            className={`selector ${activeTab === "favorited" ? "active" : ""}`}
             onClick={setFavoriteActive}
           >
             favorited ({favoriteList.length})
@@ -52,13 +48,17 @@ export const FunctionalSection = ({
 
           {/* This should display the unfavorited count */}
           <div
-            className={`selector ${unfavotiteIsActive ? "active" : ""}`}
+            className={`selector ${
+              activeTab === "unfavorited" ? "active" : ""
+            }`}
             onClick={setUnfavoriteActive}
           >
             unfavorited ({unfavoriteList.length})
           </div>
           <div
-            className={`selector ${createIsActive ? "active" : ""}`}
+            className={`selector ${
+              activeTab === "create-dog-form" ? "active" : ""
+            }`}
             id={"create-btn"}
             onClick={setCreateActive}
           >

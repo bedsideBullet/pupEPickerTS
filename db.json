@@ -18,22 +18,15 @@
       "name": "Sabrina",
       "image": "/assets/boxer.png",
       "description": "raw unless now modulo ignorant",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 5
     },
     {
       "name": "Clifford",
       "image": "/assets/boxer.png",
       "description": "grubby complication ouch past discrete contrive supposing",
-      "isFavorite": false,
-      "id": 6
-    },
-    {
-      "name": "Camryn",
-      "image": "/assets/boxer.png",
-      "description": "recession midnight unto whoa calmly happiness tangible",
       "isFavorite": true,
-      "id": 7
+      "id": 6
     },
     {
       "name": "Mack",
@@ -46,14 +39,14 @@
       "name": "Marlen",
       "image": "/assets/blue-heeler.png",
       "description": "bulky toward wilted bully repulsive illiterate upright illiterate",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 9
     },
     {
       "name": "Ethyl",
       "image": "/assets/chihuahua.avif",
       "description": "pour briefly derive er bleakly",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 10
     },
     {
@@ -67,14 +60,14 @@
       "name": "Brant",
       "image": "/assets/blue-heeler.png",
       "description": "apropos lasso woefully supposing compartmentalize ultimate in dulcimer",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 12
     },
     {
       "name": "Vincenzo",
       "image": "/assets/blue-heeler.png",
       "description": "readily medium frankly roughly after fossilise while",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 13
     },
     {
@@ -95,7 +88,7 @@
       "name": "Lorenzo",
       "image": "/assets/cowardly.png",
       "description": "than that following blushing metro",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 16
     },
     {
@@ -134,32 +127,11 @@
       "id": 21
     },
     {
-      "name": "sdf",
-      "description": "sdfasd",
-      "image": "/assets/corgi.png",
+      "name": "sd",
+      "description": "sdgsg",
+      "image": "/assets/chihuahua.avif",
       "isFavorite": false,
       "id": 22
-    },
-    {
-      "name": "asd",
-      "description": "asd",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 23
-    },
-    {
-      "name": "asd",
-      "description": "asd",
-      "image": "/assets/blue-heeler.png",
-      "isFavorite": false,
-      "id": 24
-    },
-    {
-      "name": "sad",
-      "description": "asdff",
-      "image": "/assets/cowardly.png",
-      "isFavorite": false,
-      "id": 25
     }
   ]
 }

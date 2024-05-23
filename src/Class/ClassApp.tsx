@@ -67,19 +67,25 @@ export class ClassApp extends Component<{}, ClassAppState> {
   setAllDogs = (dogs: Dog[] | ((prevState: Dog[]) => Dog[])): void => {
     console.log("Setting All Dogs");
     this.setState((prevState) => ({
-      allDogs: typeof dogs === 'function' ? dogs(prevState.allDogs) : dogs,
+      allDogs: typeof dogs === "function" ? dogs(prevState.allDogs) : dogs,
     }));
   };
 
   render() {
-    const { allDogs, createIsActive, isLoading, unfavoriteIsActive, favoriteIsActive } = this.state;
+    const {
+      allDogs,
+      createIsActive,
+      isLoading,
+      unfavoriteIsActive,
+      favoriteIsActive,
+    } = this.state;
 
     return (
       <div className="App" style={{ backgroundColor: "goldenrod" }}>
         <header>
           <h1>pup-e-picker (Class Version)</h1>
         </header>
-        <ClassSection 
+        <ClassSection
           allDogs={allDogs}
           createIsActive={createIsActive}
           favoriteIsActive={favoriteIsActive}
@@ -89,17 +95,16 @@ export class ClassApp extends Component<{}, ClassAppState> {
           setUnfavoriteActive={this.setUnfavoriteActive}
         >
           {!createIsActive ? (
-          <ClassDogs
-            allDogs={allDogs}
-            setAllDogs={this.setAllDogs}
-            favoriteIsActive={favoriteIsActive}
-            createIsActive={createIsActive}
-            unfavoriteIsActive={unfavoriteIsActive}
-            isLoading={isLoading}
-            setIsLoading={this.setIsLoading}
-          />) :
-
-          (
+            <ClassDogs
+              allDogs={allDogs}
+              setAllDogs={this.setAllDogs}
+              favoriteIsActive={favoriteIsActive}
+              createIsActive={createIsActive}
+              unfavoriteIsActive={unfavoriteIsActive}
+              isLoading={isLoading}
+              setIsLoading={this.setIsLoading}
+            />
+          ) : (
             <ClassCreateDogForm
               setAllDogs={this.setAllDogs}
               isLoading={isLoading}

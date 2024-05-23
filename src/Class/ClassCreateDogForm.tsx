@@ -18,7 +18,10 @@ type ClassCreateDogFormState = {
   imageInput: string;
 };
 
-export class ClassCreateDogForm extends Component<ClassCreateDogFormProps, ClassCreateDogFormState> {
+export class ClassCreateDogForm extends Component<
+  ClassCreateDogFormProps,
+  ClassCreateDogFormState
+> {
   state: ClassCreateDogFormState = {
     nameInput: "",
     descriptionInput: "",
@@ -26,7 +29,6 @@ export class ClassCreateDogForm extends Component<ClassCreateDogFormProps, Class
   };
 
   createDog = (dog: Omit<Dog, "id">) => {
-    console.log("Creating Dog:", dog);
     this.props.setIsLoading(true);
     Requests.postDog(dog)
       .then(() => Requests.getAllDogs().then(this.props.setAllDogs))
@@ -50,10 +52,17 @@ export class ClassCreateDogForm extends Component<ClassCreateDogFormProps, Class
     });
   };
 
-  handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
     console.log("Handling Change:", name, value);
-    this.setState({ [name]: value } as Pick<ClassCreateDogFormState, keyof ClassCreateDogFormState>);
+    this.setState({ [name]: value } as Pick<
+      ClassCreateDogFormState,
+      keyof ClassCreateDogFormState
+    >);
   };
 
   render() {

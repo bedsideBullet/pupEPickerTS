@@ -2,50 +2,49 @@ import React from "react";
 import { DogCard } from "../Shared/DogCard";
 import { Dog } from "../types";
 import { Requests } from "../api";
+import { ActiveTab } from "../types";
 
 type FunctionalDogProps = {
   allDogs: Dog[];
   setAllDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
-  favotiteIsActive: boolean;
-  createIsActive: boolean;
-  unfavoriteIsActive: boolean;
-  isLoading: boolean
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  activeTab: ActiveTab;
 };
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
   allDogs,
+  activeTab,
   setAllDogs,
-  favotiteIsActive,
-  createIsActive,
-  unfavoriteIsActive,
   isLoading,
-  setIsLoading
+  setIsLoading,
 }) => {
-
-
   const favoriteClick = (dog: Dog) => {
-    setIsLoading(true)
+    setIsLoading(true);
     const updatedDog = { ...dog, isFavorite: !dog.isFavorite };
 
-    Requests.updateDog(updatedDog).then(() => {
-      const updatedDogs = allDogs.map((d) => {
-        if (d.id === dog.id) {
-          return updatedDog;
-        }
-        return d;
-      });
-      setAllDogs(updatedDogs);
-    }).finally(() => setIsLoading(false));
+    Requests.updateDog(updatedDog)
+      .then(() => {
+        const updatedDogs = allDogs.map((d) => {
+          if (d.id === dog.id) {
+            return updatedDog;
+          }
+          return d;
+        });
+        setAllDogs(updatedDogs);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const deleteDog = (dogId: number) => {
-    setIsLoading(true)
-    Requests.deleteDog(dogId).then(() => {
-      const updatedDogs = allDogs.filter((dog) => dog.id !== dogId);
-      setAllDogs(updatedDogs);
-    }).finally(() => setIsLoading(false));
+    setIsLoading(true);
+    Requests.deleteDog(dogId)
+      .then(() => {
+        const updatedDogs = allDogs.filter((dog) => dog.id !== dogId);
+        setAllDogs(updatedDogs);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const dogList = (dogs: Dog[]) => {
@@ -67,8 +66,6 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
     ));
   };
 
-  const showAllDogs =
-    !favotiteIsActive && !createIsActive && !unfavoriteIsActive;
   const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
   const unfavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
 
@@ -77,9 +74,9 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
     // without adding an actual html element
 
     <>
-      {showAllDogs
+      {activeTab === "none-selected"
         ? dogList(allDogs)
-        : favotiteIsActive
+        : activeTab === "favorited"
         ? dogList(favoriteDogs)
         : dogList(unfavoriteDogs)}
     </>

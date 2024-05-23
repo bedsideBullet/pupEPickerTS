@@ -6,3 +6,9 @@ export type Dog = {
   description: string;
   isFavorite: boolean;
 };
+
+export type ActiveTab =
+  | "none-selected"
+  | "create-dog-form"
+  | "favorited"
+  | "unfavorited";

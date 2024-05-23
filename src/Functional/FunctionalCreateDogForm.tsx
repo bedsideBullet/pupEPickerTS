@@ -1,49 +1,62 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { dogPictures } from "../dog-pictures";
 import { Dog } from "../types";
-import { Requests } from "../api";
-import toast from "react-hot-toast";
 
 // use this as your default selected image
-const defaultSelectedImage = dogPictures.BlueHeeler;
 
-export const FunctionalCreateDogForm = ({setAllDogs, isLoading, setIsLoading}: { setAllDogs: Dispatch<SetStateAction<Dog[]>>, isLoading: boolean, setIsLoading: Dispatch<SetStateAction<boolean>>}) => {
-  const [nameInput, setNameInput] = useState<string>("");
-  const [descriptionInput, setDescriptionInput] = useState<string>("");
-  const [imageInput, setImageInput] = useState<string>("")
+export const FunctionalCreateDogForm = ({
+  isLoading,
+  createDog,
+  nameInput,
+  descriptionInput,
+  imageInput,
+  setNameInput,
+  setDescriptionInput,
+  setImageInput,
+}: {
+  setAllDogs: Dispatch<SetStateAction<Dog[]>>;
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  createDog: (dog: Omit<Dog, "id">) => void;
+  nameInput: string;
+  descriptionInput: string;
+  imageInput: string;
+  setNameInput: Dispatch<SetStateAction<string>>;
+  setDescriptionInput: Dispatch<SetStateAction<string>>;
+  setImageInput: Dispatch<SetStateAction<string>>;
+}) => {
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNameInput(event.target.value);
+  };
 
-  const createDog = (dog: Omit<Dog, "id">) => {
-    setIsLoading(true);
-    Requests.postDog(dog)
-      .then(() => Requests.getAllDogs().then(setAllDogs))
-      .then(() => toast.success("Whoa dog, you just created a new dog! 🐶"))
-      .finally(() => setIsLoading(false));
+  const handleDescriptionChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setDescriptionInput(event.target.value);
+  };
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setImageInput(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    createDog({
+      name: nameInput,
+      description: descriptionInput,
+      image: imageInput,
+      isFavorite: false,
+    });
   };
   return (
-    <form
-      className=""
-      action=""
-      id="create-dog-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        createDog({
-          name: nameInput,
-          description: descriptionInput,
-          image: imageInput ?  imageInput : defaultSelectedImage,
-          isFavorite: false
-        })
-        setNameInput(""),
-        setDescriptionInput(""),
-        setImageInput(defaultSelectedImage)
-      }}
-    >
+    <form className="" action="" id="create-dog-form" onSubmit={handleSubmit}>
       <h4>Create a New Dog</h4>
       <label htmlFor="name">Dog Name</label>
       <input
         type="text"
         disabled={false}
         value={nameInput}
-        onChange={(e) => setNameInput(e.target.value)}
+        onChange={handleNameChange}
       />
       <label htmlFor="description">Dog Description</label>
       <textarea
@@ -53,13 +66,13 @@ export const FunctionalCreateDogForm = ({setAllDogs, isLoading, setIsLoading}: {
         rows={10}
         disabled={false}
         value={descriptionInput}
-        onChange={(e) => setDescriptionInput(e.target.value)}
+        onChange={handleDescriptionChange}
       ></textarea>
       <label htmlFor="picture">Select an Image</label>
-      <select id="" onChange={(e) => setImageInput(e.target.value)} value={imageInput}>
+      <select id="" onChange={handleImageChange} value={imageInput}>
         {Object.entries(dogPictures).map(([label, pictureValue]) => {
           return (
-            <option value={pictureValue} key={pictureValue} >
+            <option value={pictureValue} key={pictureValue}>
               {label}
             </option>
           );
