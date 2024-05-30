@@ -1,42 +1,25 @@
-import { Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import { dogPictures } from "../dog-pictures";
 import { Dog } from "../types";
 
 // use this as your default selected image
+const defaultSelectedImage: string = dogPictures.BlueHeeler;
 
 export const FunctionalCreateDogForm = ({
   isLoading,
   createDog,
-  nameInput,
-  descriptionInput,
-  imageInput,
-  setNameInput,
-  setDescriptionInput,
-  setImageInput,
 }: {
-  setAllDogs: Dispatch<SetStateAction<Dog[]>>;
   isLoading: boolean;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
   createDog: (dog: Omit<Dog, "id">) => void;
-  nameInput: string;
-  descriptionInput: string;
-  imageInput: string;
-  setNameInput: Dispatch<SetStateAction<string>>;
-  setDescriptionInput: Dispatch<SetStateAction<string>>;
-  setImageInput: Dispatch<SetStateAction<string>>;
 }) => {
-  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNameInput(event.target.value);
-  };
+  const [nameInput, setNameInput] = useState<string>("");
+  const [descriptionInput, setDescriptionInput] = useState<string>("");
+  const [imageInput, setImageInput] = useState<string>(defaultSelectedImage);
 
-  const handleDescriptionChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setDescriptionInput(event.target.value);
-  };
-
-  const handleImageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setImageInput(event.target.value);
+  const reset = () => {
+    setNameInput(""),
+      setDescriptionInput(""),
+      setImageInput(defaultSelectedImage);
   };
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -47,6 +30,7 @@ export const FunctionalCreateDogForm = ({
       image: imageInput,
       isFavorite: false,
     });
+    reset();
   };
   return (
     <form className="" action="" id="create-dog-form" onSubmit={handleSubmit}>
@@ -54,9 +38,9 @@ export const FunctionalCreateDogForm = ({
       <label htmlFor="name">Dog Name</label>
       <input
         type="text"
-        disabled={false}
+        disabled={isLoading}
         value={nameInput}
-        onChange={handleNameChange}
+        onChange={(e) => setNameInput(e.target.value)}
       />
       <label htmlFor="description">Dog Description</label>
       <textarea
@@ -64,12 +48,17 @@ export const FunctionalCreateDogForm = ({
         id=""
         cols={80}
         rows={10}
-        disabled={false}
+        disabled={isLoading}
         value={descriptionInput}
-        onChange={handleDescriptionChange}
+        onChange={(e) => setDescriptionInput(e.target.value)}
       ></textarea>
       <label htmlFor="picture">Select an Image</label>
-      <select id="" onChange={handleImageChange} value={imageInput}>
+      <select
+        id=""
+        onChange={(e) => setImageInput(e.target.value)}
+        value={imageInput}
+        disabled={isLoading}
+      >
         {Object.entries(dogPictures).map(([label, pictureValue]) => {
           return (
             <option value={pictureValue} key={pictureValue}>

@@ -6,15 +6,12 @@ import { Requests } from "../api";
 type ClassDogProps = {
   allDogs: Dog[];
   setAllDogs: (dogs: Dog[] | ((prevState: Dog[]) => Dog[])) => void;
-  favoriteIsActive: boolean;
-  createIsActive: boolean;
-  unfavoriteIsActive: boolean;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
+  activeTab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form";
 };
 
 export class ClassDogs extends Component<ClassDogProps> {
-
   favoriteClick = (dog: Dog) => {
     this.props.setIsLoading(true);
     const updatedDog = { ...dog, isFavorite: !dog.isFavorite };
@@ -33,40 +30,39 @@ export class ClassDogs extends Component<ClassDogProps> {
     this.props.setIsLoading(true);
     Requests.deleteDog(dogId)
       .then(() => {
-        const updatedDogs = this.props.allDogs.filter((dog) => dog.id !== dogId);
+        const updatedDogs = this.props.allDogs.filter(
+          (dog) => dog.id !== dogId
+        );
         this.props.setAllDogs(updatedDogs);
       })
       .finally(() => this.props.setIsLoading(false));
   };
 
-  dogList = (dogs: Dog[]) => {
-    return dogs.map((dog) => (
-      <DogCard
-        key={dog.id}
-        dog={dog}
-        onTrashIconClick={() => this.deleteDog(dog.id)}
-        onEmptyHeartClick={() => this.favoriteClick(dog)}
-        onHeartClick={() => this.favoriteClick(dog)}
-        isLoading={this.props.isLoading}
-      />
-    ));
-  };
-
   render() {
-    const { allDogs, favoriteIsActive, unfavoriteIsActive, createIsActive } = this.props;
+    const { allDogs, activeTab } = this.props;
 
-    const showAllDogs =
-      !favoriteIsActive && !createIsActive && !unfavoriteIsActive;
     const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
     const unfavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
+    const filteredDogs = {
+      "none-selected": allDogs,
+      favorited: favoriteDogs,
+      unfavorited: unfavoriteDogs,
+    };
 
     return (
       <>
-        {showAllDogs
-          ? this.dogList(allDogs)
-          : favoriteIsActive
-          ? this.dogList(favoriteDogs)
-          : this.dogList(unfavoriteDogs)}
+        {filteredDogs[activeTab as keyof typeof filteredDogs].map(
+          (dog: Dog) => (
+            <DogCard
+              key={dog.id}
+              dog={dog}
+              onTrashIconClick={() => this.deleteDog(dog.id)}
+              onEmptyHeartClick={() => this.favoriteClick(dog)}
+              onHeartClick={() => this.favoriteClick(dog)}
+              isLoading={this.props.isLoading}
+            />
+          )
+        )}
       </>
     );
   }

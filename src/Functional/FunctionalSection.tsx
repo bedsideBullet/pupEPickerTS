@@ -1,5 +1,5 @@
 // you can use this type for react children if you so choose
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ActiveTab, Dog } from "../types";
 
@@ -7,16 +7,12 @@ export const FunctionalSection = ({
   allDogs,
   children,
   activeTab,
-  setCreateActive,
-  setFavoriteActive,
-  setUnfavoriteActive,
+  handleSetActiveState,
 }: {
   allDogs: Dog[];
   children: ReactNode;
   activeTab: ActiveTab;
-  setCreateActive: MouseEventHandler<HTMLDivElement>;
-  setFavoriteActive: MouseEventHandler<HTMLDivElement>;
-  setUnfavoriteActive: MouseEventHandler<HTMLDivElement>;
+  handleSetActiveState: (tabName: ActiveTab) => void;
 }) => {
   const favoriteList = allDogs
     .filter((dog) => dog.isFavorite)
@@ -41,7 +37,7 @@ export const FunctionalSection = ({
           {/* This should display the favorited count */}
           <div
             className={`selector ${activeTab === "favorited" ? "active" : ""}`}
-            onClick={setFavoriteActive}
+            onClick={() => handleSetActiveState("favorited")}
           >
             favorited ({favoriteList.length})
           </div>
@@ -51,7 +47,7 @@ export const FunctionalSection = ({
             className={`selector ${
               activeTab === "unfavorited" ? "active" : ""
             }`}
-            onClick={setUnfavoriteActive}
+            onClick={() => handleSetActiveState("unfavorited")}
           >
             unfavorited ({unfavoriteList.length})
           </div>
@@ -60,7 +56,7 @@ export const FunctionalSection = ({
               activeTab === "create-dog-form" ? "active" : ""
             }`}
             id={"create-btn"}
-            onClick={setCreateActive}
+            onClick={() => handleSetActiveState("create-dog-form")}
           >
             create dog
           </div>

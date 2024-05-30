@@ -18,7 +18,7 @@
       "name": "Sabrina",
       "image": "/assets/boxer.png",
       "description": "raw unless now modulo ignorant",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 5
     },
     {
@@ -46,14 +46,14 @@
       "name": "Ethyl",
       "image": "/assets/chihuahua.avif",
       "description": "pour briefly derive er bleakly",
-      "isFavorite": true,
+      "isFavorite": false,
       "id": 10
     },
     {
       "name": "Sammie",
       "image": "/assets/corgi.png",
       "description": "ulcerate harm finally embitter as duh until",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 11
     },
     {
@@ -69,13 +69,6 @@
       "description": "readily medium frankly roughly after fossilise while",
       "isFavorite": true,
       "id": 13
-    },
-    {
-      "name": "Thurman",
-      "image": "/assets/chihuahua.avif",
-      "description": "overjoyed chief sap worthwhile as restaurant jiggle astride",
-      "isFavorite": false,
-      "id": 14
     },
     {
       "name": "Jeanne",
@@ -132,6 +125,13 @@
       "image": "/assets/chihuahua.avif",
       "isFavorite": false,
       "id": 22
+    },
+    {
+      "name": "dsdg",
+      "description": "sdgdsg",
+      "image": "/assets/chihuahua.avif",
+      "isFavorite": false,
+      "id": 23
     }
   ]
 }

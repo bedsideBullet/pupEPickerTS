@@ -1,30 +1,17 @@
 import { Component, ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Dog } from "../types";
+import { ActiveTab, Dog } from "../types";
 
 type ClassSectionProps = {
   allDogs: Dog[];
   children: ReactNode;
-  createIsActive: boolean;
-  favoriteIsActive: boolean;
-  unfavoriteIsActive: boolean;
-  setCreateActive: () => void;
-  setFavoriteActive: () => void;
-  setUnfavoriteActive: () => void;
+  activeTab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form";
+  setActiveTab: (tab: ActiveTab) => void;
 };
 
 export class ClassSection extends Component<ClassSectionProps> {
   render() {
-    const {
-      allDogs,
-      children,
-      createIsActive,
-      favoriteIsActive,
-      unfavoriteIsActive,
-      setCreateActive,
-      setFavoriteActive,
-      setUnfavoriteActive,
-    } = this.props;
+    const { allDogs, children, activeTab, setActiveTab } = this.props;
 
     const favoriteList = allDogs.filter((dog) => dog.isFavorite);
     const unfavoriteList = allDogs.filter((dog) => !dog.isFavorite);
@@ -38,24 +25,28 @@ export class ClassSection extends Component<ClassSectionProps> {
           </Link>
           <div className="selectors">
             <div
-              className={`selector ${favoriteIsActive ? "active" : ""}`}
-              onClick={setFavoriteActive}
+              className={`selector ${
+                activeTab === "favorited" ? "active" : ""
+              }`}
+              onClick={() => setActiveTab("favorited")}
             >
               favorited ({favoriteList.length})
             </div>
 
             <div
-              className={`selector ${unfavoriteIsActive ? "active" : ""}`}
-              onClick={setUnfavoriteActive}
+              className={`selector ${
+                activeTab === "unfavorited" ? "active" : ""
+              }`}
+              onClick={() => setActiveTab("unfavorited")}
             >
               unfavorited ({unfavoriteList.length})
             </div>
             <div
-              className={`selector ${createIsActive ? "active" : ""}`}
+              className={`selector ${
+                activeTab === "create-dog-form" ? "active" : ""
+              }`}
               id={"create-btn"}
-              onClick={
-                setCreateActive
-              }
+              onClick={() => setActiveTab("create-dog-form")}
             >
               create dog
             </div>
@@ -66,4 +57,3 @@ export class ClassSection extends Component<ClassSectionProps> {
     );
   }
 }
-

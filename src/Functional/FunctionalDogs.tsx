@@ -24,7 +24,7 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
     setIsLoading(true);
     const updatedDog = { ...dog, isFavorite: !dog.isFavorite };
 
-    Requests.updateDog(updatedDog)
+    return Requests.updateDog(updatedDog)
       .then(() => {
         const updatedDogs = allDogs.map((d) => {
           if (d.id === dog.id) {
@@ -39,7 +39,7 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
 
   const deleteDog = (dogId: number) => {
     setIsLoading(true);
-    Requests.deleteDog(dogId)
+    return Requests.deleteDog(dogId)
       .then(() => {
         const updatedDogs = allDogs.filter((dog) => dog.id !== dogId);
         setAllDogs(updatedDogs);
@@ -47,38 +47,38 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
       .finally(() => setIsLoading(false));
   };
 
-  const dogList = (dogs: Dog[]) => {
-    return dogs.map((dog) => (
-      <DogCard
-        key={dog.id}
-        dog={dog}
-        onTrashIconClick={() => {
-          deleteDog(dog.id);
-        }}
-        onEmptyHeartClick={() => {
-          favoriteClick(dog);
-        }}
-        onHeartClick={() => {
-          favoriteClick(dog);
-        }}
-        isLoading={isLoading}
-      />
-    ));
-  };
-
   const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
   const unfavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
+
+  const filteredDogs = {
+    "none-selected": allDogs,
+    favorited: favoriteDogs,
+    unfavorited: unfavoriteDogs,
+  };
 
   return (
     //  the "<> </>"" are called react fragments, it's like adding all the html inside
     // without adding an actual html element
 
     <>
-      {activeTab === "none-selected"
-        ? dogList(allDogs)
-        : activeTab === "favorited"
-        ? dogList(favoriteDogs)
-        : dogList(unfavoriteDogs)}
+      {filteredDogs[activeTab as keyof typeof filteredDogs].map((dog: Dog) => {
+        return (
+          <DogCard
+            key={dog.id}
+            dog={dog}
+            onTrashIconClick={() => {
+              deleteDog(dog.id);
+            }}
+            onEmptyHeartClick={() => {
+              favoriteClick(dog);
+            }}
+            onHeartClick={() => {
+              favoriteClick(dog);
+            }}
+            isLoading={isLoading}
+          />
+        );
+      })}
     </>
   );
 };

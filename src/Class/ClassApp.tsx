@@ -8,19 +8,15 @@ import { Toaster } from "react-hot-toast";
 
 type ClassAppState = {
   allDogs: Dog[];
-  favoriteIsActive: boolean;
-  createIsActive: boolean;
-  unfavoriteIsActive: boolean;
+  activeTab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form";
   isLoading: boolean;
 };
 
 export class ClassApp extends Component<{}, ClassAppState> {
   state: ClassAppState = {
     allDogs: [],
-    createIsActive: false,
-    favoriteIsActive: false,
-    unfavoriteIsActive: false,
     isLoading: false,
+    activeTab: "none-selected",
   };
 
   componentDidMount() {
@@ -34,31 +30,6 @@ export class ClassApp extends Component<{}, ClassAppState> {
       });
   }
 
-  setCreateActive = () => {
-    console.log("Toggling Create Form");
-    this.setState(() => ({
-      createIsActive: true,
-      favoriteIsActive: false,
-      unfavoriteIsActive: false,
-    }));
-  };
-
-  setFavoriteActive = () => {
-    this.setState((prevState) => ({
-      favoriteIsActive: !prevState.favoriteIsActive,
-      createIsActive: false,
-      unfavoriteIsActive: false,
-    }));
-  };
-
-  setUnfavoriteActive = () => {
-    this.setState((prevState) => ({
-      unfavoriteIsActive: !prevState.unfavoriteIsActive,
-      createIsActive: false,
-      favoriteIsActive: false,
-    }));
-  };
-
   setIsLoading = (isLoading: boolean) => {
     console.log("Setting Loading State:", isLoading);
     this.setState({ isLoading });
@@ -71,14 +42,16 @@ export class ClassApp extends Component<{}, ClassAppState> {
     }));
   };
 
+  setActiveTab = (
+    tab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form"
+  ) => {
+    this.setState({
+      activeTab: tab,
+    });
+  };
+
   render() {
-    const {
-      allDogs,
-      createIsActive,
-      isLoading,
-      unfavoriteIsActive,
-      favoriteIsActive,
-    } = this.state;
+    const { allDogs, isLoading, activeTab } = this.state;
 
     return (
       <div className="App" style={{ backgroundColor: "goldenrod" }}>
@@ -87,22 +60,16 @@ export class ClassApp extends Component<{}, ClassAppState> {
         </header>
         <ClassSection
           allDogs={allDogs}
-          createIsActive={createIsActive}
-          favoriteIsActive={favoriteIsActive}
-          unfavoriteIsActive={unfavoriteIsActive}
-          setCreateActive={this.setCreateActive}
-          setFavoriteActive={this.setFavoriteActive}
-          setUnfavoriteActive={this.setUnfavoriteActive}
+          activeTab={activeTab}
+          setActiveTab={this.setActiveTab}
         >
-          {!createIsActive ? (
+          {activeTab === "create-dog-form" ? (
             <ClassDogs
               allDogs={allDogs}
               setAllDogs={this.setAllDogs}
-              favoriteIsActive={favoriteIsActive}
-              createIsActive={createIsActive}
-              unfavoriteIsActive={unfavoriteIsActive}
               isLoading={isLoading}
               setIsLoading={this.setIsLoading}
+              activeTab={activeTab}
             />
           ) : (
             <ClassCreateDogForm
