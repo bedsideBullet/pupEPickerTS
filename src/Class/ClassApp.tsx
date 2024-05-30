@@ -45,9 +45,9 @@ export class ClassApp extends Component<{}, ClassAppState> {
   setActiveTab = (
     tab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form"
   ) => {
-    this.setState({
-      activeTab: tab,
-    });
+    this.setState((prevState) => ({
+      activeTab: prevState.activeTab === tab ? "none-selected" : tab,
+    }));
   };
 
   render() {
@@ -63,7 +63,7 @@ export class ClassApp extends Component<{}, ClassAppState> {
           activeTab={activeTab}
           setActiveTab={this.setActiveTab}
         >
-          {activeTab === "create-dog-form" ? (
+          {activeTab !== "create-dog-form" ? (
             <ClassDogs
               allDogs={allDogs}
               setAllDogs={this.setAllDogs}
