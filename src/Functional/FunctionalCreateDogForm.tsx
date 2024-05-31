@@ -10,16 +10,16 @@ export const FunctionalCreateDogForm = ({
   createDog,
 }: {
   isLoading: boolean;
-  createDog: (dog: Omit<Dog, "id">) => void;
+  createDog: (dog: Omit<Dog, "id">) => Promise<void>;
 }) => {
   const [nameInput, setNameInput] = useState<string>("");
   const [descriptionInput, setDescriptionInput] = useState<string>("");
   const [imageInput, setImageInput] = useState<string>(defaultSelectedImage);
 
   const reset = () => {
-    setNameInput(""),
-      setDescriptionInput(""),
-      setImageInput(defaultSelectedImage);
+    setNameInput("");
+    setDescriptionInput("");
+    setImageInput(defaultSelectedImage);
   };
 
   const handleSubmit = (event: React.FormEvent) => {

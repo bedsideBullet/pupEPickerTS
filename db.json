@@ -22,20 +22,6 @@
       "id": 5
     },
     {
-      "name": "Clifford",
-      "image": "/assets/boxer.png",
-      "description": "grubby complication ouch past discrete contrive supposing",
-      "isFavorite": true,
-      "id": 6
-    },
-    {
-      "name": "Mack",
-      "image": "/assets/chihuahua.avif",
-      "description": "helplessly remainder tarry pullulate legal towards round pomelo",
-      "isFavorite": false,
-      "id": 8
-    },
-    {
       "name": "Marlen",
       "image": "/assets/blue-heeler.png",
       "description": "bulky toward wilted bully repulsive illiterate upright illiterate",
@@ -46,7 +32,7 @@
       "name": "Ethyl",
       "image": "/assets/chihuahua.avif",
       "description": "pour briefly derive er bleakly",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 10
     },
     {
@@ -55,13 +41,6 @@
       "description": "ulcerate harm finally embitter as duh until",
       "isFavorite": true,
       "id": 11
-    },
-    {
-      "name": "Brant",
-      "image": "/assets/blue-heeler.png",
-      "description": "apropos lasso woefully supposing compartmentalize ultimate in dulcimer",
-      "isFavorite": true,
-      "id": 12
     },
     {
       "name": "Vincenzo",
@@ -102,7 +81,7 @@
       "name": "Jeramy",
       "image": "/assets/blue-heeler.png",
       "description": "though accidentally drat mountainous unwilling knowingly as overhead",
-      "isFavorite": false,
+      "isFavorite": true,
       "id": 19
     },
     {
@@ -132,6 +111,20 @@
       "image": "/assets/chihuahua.avif",
       "isFavorite": false,
       "id": 23
+    },
+    {
+      "name": "asd",
+      "description": "asdasd",
+      "image": "/assets/boxer.jpeg",
+      "isFavorite": false,
+      "id": 24
+    },
+    {
+      "name": "awefs",
+      "description": "sdfsdg",
+      "image": "/assets/boxer.jpeg",
+      "isFavorite": false,
+      "id": 25
     }
   ]
 }

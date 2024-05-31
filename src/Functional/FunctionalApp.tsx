@@ -11,8 +11,12 @@ export function FunctionalApp() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("none-selected");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const refetchDogs = () => {
+    return Requests.getAllDogs().then(setAllDogs)
+  }
+
   useEffect(() => {
-    Requests.getAllDogs().then(setAllDogs);
+    refetchDogs();
   }, []);
 
   const handleSetActiveState = (tabName: ActiveTab) => {
@@ -24,8 +28,10 @@ export function FunctionalApp() {
   const createDog = (dog: Omit<Dog, "id">) => {
     setIsLoading(true);
     return Requests.postDog(dog)
-      .then(() => Requests.getAllDogs().then(setAllDogs))
-      .then(() => toast.success("Whoa dog, you just created a new dog! 🐶"))
+      .then(() => refetchDogs())
+      .then(() => {toast.success("Whoa dog, you just created a new dog! 🐶")
+        return
+      })
       .finally(() => setIsLoading(false));
   };
 
@@ -48,10 +54,10 @@ export function FunctionalApp() {
         ) : (
           <FunctionalDogs
             allDogs={allDogs}
-            setAllDogs={setAllDogs}
             activeTab={activeTab}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
+            refetchDogs={refetchDogs}
           />
         )}
       </FunctionalSection>

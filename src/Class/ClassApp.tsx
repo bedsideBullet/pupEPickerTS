@@ -12,40 +12,37 @@ type ClassAppState = {
   isLoading: boolean;
 };
 
-export class ClassApp extends Component<{}, ClassAppState> {
+export class ClassApp extends Component<Record<string, never>, ClassAppState> {
   state: ClassAppState = {
     allDogs: [],
     isLoading: false,
     activeTab: "none-selected",
   };
 
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    Requests.getAllDogs()
+  refetchDogs = () => {
+    return Requests.getAllDogs()
       .then((allDogs) => {
         this.setState({ allDogs });
       })
-      .finally(() => {
-        this.setState({ isLoading: false });
-      });
+  }
+
+  componentDidMount() {
+   this.refetchDogs();
   }
 
   setIsLoading = (isLoading: boolean) => {
     this.setState({ isLoading });
   };
 
-  setAllDogs = (dogs: Dog[] | ((prevState: Dog[]) => Dog[])): void => {
-    this.setState((prevState) => ({
-      allDogs: typeof dogs === "function" ? dogs(prevState.allDogs) : dogs,
-    }));
+  setAllDogs = (dogs: Dog[]) => {
+    this.setState({allDogs: dogs});
   };
 
   setActiveTab = (
     tab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form"
   ) => {
-    this.setState((prevState) => ({
-      activeTab: prevState.activeTab === tab ? "none-selected" : tab,
-    }));
+    const activeTab = this.state.activeTab === tab ? "none-selected" : tab
+    this.setState({ activeTab});
   };
 
   render() {
@@ -64,14 +61,14 @@ export class ClassApp extends Component<{}, ClassAppState> {
           {activeTab !== "create-dog-form" ? (
             <ClassDogs
               allDogs={allDogs}
-              setAllDogs={this.setAllDogs}
+              refetchDogs={this.refetchDogs}
               isLoading={isLoading}
               setIsLoading={this.setIsLoading}
               activeTab={activeTab}
             />
           ) : (
             <ClassCreateDogForm
-              setAllDogs={this.setAllDogs}
+            refetchDogs={this.refetchDogs}
               isLoading={isLoading}
               setIsLoading={this.setIsLoading}
             />

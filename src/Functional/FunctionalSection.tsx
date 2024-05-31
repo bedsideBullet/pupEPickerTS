@@ -16,15 +16,11 @@ export const FunctionalSection = ({
 }) => {
   const favoriteList = allDogs
     .filter((dog) => dog.isFavorite)
-    .map((dog) => {
-      return dog;
-    });
+    .map((dog) => dog);
 
   const unfavoriteList = allDogs
     .filter((dog) => !dog.isFavorite)
-    .map((dog) => {
-      return dog;
-    });
+    .map((dog) => dog);
 
   return (
     <section id="main-section">

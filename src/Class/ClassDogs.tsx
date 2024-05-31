@@ -1,11 +1,11 @@
 import { Component } from "react";
 import { DogCard } from "../Shared/DogCard";
-import { Dog } from "../types";
+import { ActiveTab, Dog } from "../types";
 import { Requests } from "../api";
 
 type ClassDogProps = {
   allDogs: Dog[];
-  setAllDogs: (dogs: Dog[] | ((prevState: Dog[]) => Dog[])) => void;
+  refetchDogs: () => Promise<void>;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
   activeTab: "none-selected" | "favorited" | "unfavorited" | "create-dog-form";
@@ -13,29 +13,25 @@ type ClassDogProps = {
 
 export class ClassDogs extends Component<ClassDogProps> {
   favoriteClick = (dog: Dog) => {
-    this.props.setIsLoading(true);
+    const { refetchDogs, setIsLoading } = this.props
+    setIsLoading(true);
     const updatedDog = { ...dog, isFavorite: !dog.isFavorite };
 
-    Requests.updateDog(updatedDog)
+    return Requests.updateDog(updatedDog)
       .then(() => {
-        const updatedDogs = this.props.allDogs.map((d) =>
-          d.id === dog.id ? updatedDog : d
-        );
-        this.props.setAllDogs(updatedDogs);
+        refetchDogs();
       })
-      .finally(() => this.props.setIsLoading(false));
+      .finally(() => setIsLoading(false));
   };
 
   deleteDog = (dogId: number) => {
-    this.props.setIsLoading(true);
+    const { refetchDogs, setIsLoading } = this.props
+    setIsLoading(true);
     Requests.deleteDog(dogId)
       .then(() => {
-        const updatedDogs = this.props.allDogs.filter(
-          (dog) => dog.id !== dogId
-        );
-        this.props.setAllDogs(updatedDogs);
+        refetchDogs();
       })
-      .finally(() => this.props.setIsLoading(false));
+      .finally(() => setIsLoading(false));
   };
 
   render() {
@@ -43,15 +39,16 @@ export class ClassDogs extends Component<ClassDogProps> {
 
     const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
     const unfavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
-    const filteredDogs = {
+    const filteredDogs: Record<ActiveTab, Dog[]> = {
       "none-selected": allDogs,
       favorited: favoriteDogs,
       unfavorited: unfavoriteDogs,
+      "create-dog-form": []
     };
 
     return (
       <>
-        {filteredDogs[activeTab as keyof typeof filteredDogs].map(
+        {filteredDogs[activeTab].map(
           (dog: Dog) => (
             <DogCard
               key={dog.id}

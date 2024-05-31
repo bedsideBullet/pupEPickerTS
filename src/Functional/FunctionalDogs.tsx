@@ -6,19 +6,19 @@ import { ActiveTab } from "../types";
 
 type FunctionalDogProps = {
   allDogs: Dog[];
-  setAllDogs: React.Dispatch<React.SetStateAction<Dog[]>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   activeTab: ActiveTab;
+  refetchDogs: () => Promise<void>;
 };
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
 export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
   allDogs,
   activeTab,
-  setAllDogs,
   isLoading,
   setIsLoading,
+  refetchDogs
 }) => {
   const favoriteClick = (dog: Dog) => {
     setIsLoading(true);
@@ -26,13 +26,7 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
 
     return Requests.updateDog(updatedDog)
       .then(() => {
-        const updatedDogs = allDogs.map((d) => {
-          if (d.id === dog.id) {
-            return updatedDog;
-          }
-          return d;
-        });
-        setAllDogs(updatedDogs);
+        refetchDogs()
       })
       .finally(() => setIsLoading(false));
   };
@@ -41,8 +35,7 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
     setIsLoading(true);
     return Requests.deleteDog(dogId)
       .then(() => {
-        const updatedDogs = allDogs.filter((dog) => dog.id !== dogId);
-        setAllDogs(updatedDogs);
+        refetchDogs()
       })
       .finally(() => setIsLoading(false));
   };
@@ -50,10 +43,11 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
   const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
   const unfavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
 
-  const filteredDogs = {
+  const filteredDogs: Record<ActiveTab, Dog[]> = {
     "none-selected": allDogs,
     favorited: favoriteDogs,
     unfavorited: unfavoriteDogs,
+    "create-dog-form": []
   };
 
   return (
@@ -61,7 +55,7 @@ export const FunctionalDogs: React.FC<FunctionalDogProps> = ({
     // without adding an actual html element
 
     <>
-      {filteredDogs[activeTab as keyof typeof filteredDogs].map((dog: Dog) => {
+      {filteredDogs[activeTab].map((dog: Dog) => {
         return (
           <DogCard
             key={dog.id}

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const defaultSelectedImage = dogPictures.BlueHeeler;
 
 type ClassCreateDogFormProps = {
-  setAllDogs: (dogs: Dog[] | ((prevState: Dog[]) => Dog[])) => void;
+  refetchDogs: () => Promise<void>;
   isLoading: boolean;
   setIsLoading: (isLoading: boolean) => void;
 };
@@ -31,8 +31,10 @@ export class ClassCreateDogForm extends Component<
   createDog = (dog: Omit<Dog, "id">) => {
     this.props.setIsLoading(true);
     Requests.postDog(dog)
-      .then(() => Requests.getAllDogs().then(this.props.setAllDogs))
-      .then(() => toast.success("Whoa dog, you just created a new dog! 🐶"))
+      .then(() => this.props.refetchDogs())
+      .then(() => {toast.success("Whoa dog, you just created a new dog! 🐶")
+        return
+      })
       .finally(() => this.props.setIsLoading(false));
   };
 
