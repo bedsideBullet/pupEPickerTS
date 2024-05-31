@@ -31,12 +31,10 @@ export class ClassApp extends Component<{}, ClassAppState> {
   }
 
   setIsLoading = (isLoading: boolean) => {
-    console.log("Setting Loading State:", isLoading);
     this.setState({ isLoading });
   };
 
   setAllDogs = (dogs: Dog[] | ((prevState: Dog[]) => Dog[])): void => {
-    console.log("Setting All Dogs");
     this.setState((prevState) => ({
       allDogs: typeof dogs === "function" ? dogs(prevState.allDogs) : dogs,
     }));

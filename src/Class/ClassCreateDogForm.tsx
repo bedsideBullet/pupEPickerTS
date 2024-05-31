@@ -58,7 +58,6 @@ export class ClassCreateDogForm extends Component<
     >
   ) => {
     const { name, value } = e.target;
-    console.log("Handling Change:", name, value);
     this.setState({ [name]: value } as Pick<
       ClassCreateDogFormState,
       keyof ClassCreateDogFormState
@@ -100,6 +99,7 @@ export class ClassCreateDogForm extends Component<
           name="imageInput"
           onChange={this.handleChange}
           value={imageInput}
+          disabled={isLoading}
         >
           {Object.entries(dogPictures).map(([label, pictureValue]) => (
             <option value={pictureValue} key={pictureValue}>
